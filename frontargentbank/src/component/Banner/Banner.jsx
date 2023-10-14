@@ -19,8 +19,8 @@ return(
       <h1 className="sr-only">Argent Bank</h1>
     <div>
     <Link to= "/Registration" className="main-nav-item">
-        <i className="fa fa-user-circle"></i>
-        Sign In
+        <i className="fa fa-user-circle"></i> 
+        <span> Sign In</span>
     </Link>
     </div>
   </nav> 

@@ -2,9 +2,17 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./banner.css";
 import img from "./../../asset/img/argentBankLogo.png"
+import { useDispatch, useSelector } from "react-redux";
 
 
 function Banner(){
+  const dispatch = useDispatch();
+  const token = useSelector((state)=>  state.userToken.token)
+
+  const logout = () => {
+
+  }
+
 
 return(
      

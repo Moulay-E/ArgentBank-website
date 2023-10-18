@@ -1,42 +1,31 @@
-import React, { useEffect, useRef } from "react";
+import React, {  useRef } from "react";
 import "./registration.css";
-import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchUser, setUserTryToLogin } from "../../reducer/userSlice.reducer";
-import fetchTest from "./fetchTest";
+import { useDispatch } from "react-redux";
+import { fetchToken } from "../../reducer/userTokenSlice.reducer";
+import { useNavigate } from "react-router-dom";
 
 function Registration() {
   const form = useRef();
   const dispatch = useDispatch();
-  const userData = useSelector((state) => state.userSliceReducer);
- const token =  useSelector((state) => state.userSliceReducer.token);
-
-  useEffect(() => {
-    if (userData) {
-      console.log("Données de l'utilisateur :", userData);
-    }
-  }, [userData]);
-
+  const navigate = useNavigate();
 
   const handleForm = async(e)=> {
     e.preventDefault();
-    // console.log(form.current[0].value);
-    // console.log(form.current[1].value);
-    // console.log("mon token", token);
+
     const userTryToLogin = {
-      email: form.current[0].value,
-      password:form.current[1].value,
+      // email: form.current[0].value,
+      // password:form.current[1].value,
+      "email": "tony@stark.com",
+      "password": "password123"
     };
-    dispatch(setUserTryToLogin(userTryToLogin))
-     
-    // fetchTest();
-    dispatch(fetchUser());
-    
-  }
+
+   await dispatch(fetchToken(userTryToLogin));
+   navigate("/Registration/user");
+  
+  };
 
     return(
-       <>
-        
+       <>  
         <main className="main bg-dark">
       <section className="sign-in-content">
         <i className="fa fa-user-circle sign-in-icon"></i>
@@ -55,15 +44,12 @@ function Registration() {
               >Remember me</label>
             
           </div>
-          {/* <Link to="./user" className="sign-in-button"> */}
           <button className="sign-in-button"  type="submit" >
             <span>Sign In</span>
           </button>
-          {/* </Link> */}
         </form>
       </section>
     </main>
-
        </>
     ) 
 }

@@ -1,17 +1,21 @@
 import React, { useEffect } from "react";
 import "./user.css";
+import Modal from "../../component/modal/modal";
+//redux
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { fetchUserProfil } from "../../reducer/userProfilSlice.reducer";
+import {fetchUserProfil} from "./../../reducer/allCreateAsyncThunk";
+import { isEmpty } from "../../component/utils";
+
 
 function User() {
-  const token = useSelector((state) => state.userToken.token);
+  const token = useSelector((state) => state.userToken.token) || localStorage.getItem('token');
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const userProfil = useSelector((state)=> state.userProfile.userProfil);
   
   useEffect(() => {
-    if (token) {
+    if (!isEmpty(token)) {
       dispatch(fetchUserProfil(token));
     }
     else {
@@ -24,6 +28,7 @@ function User() {
         {userProfil ? (
             <div className="header">
             <h1>Welcome back<br />{userProfil.firstName} {userProfil.lastName} !</h1>
+            <Modal />
             </div>
         ) : (
             <div className="header">

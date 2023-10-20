@@ -1,8 +1,8 @@
 import React, {  useRef } from "react";
 import "./registration.css";
 import { useDispatch } from "react-redux";
-import { fetchToken } from "../../reducer/userTokenSlice.reducer";
 import { useNavigate } from "react-router-dom";
+import {fetchToken} from "./../../reducer/allCreateAsyncThunk";
 
 function Registration() {
   const form = useRef();
@@ -11,18 +11,15 @@ function Registration() {
 
   const handleForm = async(e)=> {
     e.preventDefault();
-
     const userTryToLogin = {
       // email: form.current[0].value,
       // password:form.current[1].value,
       "email": "tony@stark.com",
       "password": "password123"
     };
-
-   await dispatch(fetchToken(userTryToLogin));
-   navigate("/Registration/user");
-  
-  };
+    await dispatch(fetchToken(userTryToLogin));
+    navigate("/Registration/user");
+};
 
     return(
        <>  

@@ -1,31 +1,5 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-
-
-export const fetchUserProfil = createAsyncThunk(
-    "userProfil/fetchUserProfile",
-    async ( token, thunkAPI) => {
-      try {
-        const response = await fetch("http://localhost:3001/api/v1/user/profile", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        });
-  
-        if (response.ok) {
-          const userData = await response.json();
-          console.log('je suiso le userProfile', userData)
-          return userData;
-        } else {
-          throw new Error(`Échec de la requête fetch : ${response.status} ${response.statusText}`);
-        }
-      } catch (error) {
-        throw error;
-      }
-    }
-  );
-
+import { createSlice } from "@reduxjs/toolkit";
+import  {fetchUserProfil} from "./allCreateAsyncThunk";
 
   
 const userProfilSlice = createSlice({
@@ -43,6 +17,11 @@ const userProfilSlice = createSlice({
        
     },
     reducers: {
+      setUserNameReducer: (state, action) => {
+        console.log(action, 'sa est apeller')
+        state.userProfil.userName = action.payload;
+        console.log(state);
+      }
     },
     extraReducers: (builder) => {
       builder
@@ -67,5 +46,6 @@ const userProfilSlice = createSlice({
     },
   });
   
+  export const { setUserNameReducer } = userProfilSlice.actions;
   export default userProfilSlice.reducer;
   

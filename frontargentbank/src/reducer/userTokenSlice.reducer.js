@@ -1,28 +1,5 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-
-
-export const fetchToken = createAsyncThunk("token/fetchToken", async(userTryToLogin) => {
-  try {
-    const response = await fetch("http://localhost:3001/api/v1/user/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(userTryToLogin),
-    })
-    if (response.ok) {
-      const userData = await response.json();
-      return userData;
-    }
-    else {
-      throw new Error("Echec de la requête fetch");
-    }
-
-  }
-  catch (error){
-    throw error;
-  }
-});
+import { createSlice } from "@reduxjs/toolkit";
+import  {fetchToken} from "./allCreateAsyncThunk";
 
 
 const userTokenSlice = createSlice({
@@ -33,8 +10,15 @@ const userTokenSlice = createSlice({
       error: null
        
     },
-
     reducers: {
+      logout : (state)=>{
+        state.token = null;
+        state.error = null;
+        localStorage.removeItem('token');
+      },
+      addError: (state, action) => {
+        state.error = action.payload;
+      },
     },
     extraReducers: (builder) => {
       builder
@@ -46,6 +30,7 @@ const userTokenSlice = createSlice({
         state.loading = false;
         state.data = action.payload;
         state.token =  action.payload.body.token;
+        localStorage.setItem('token', state.token);
       })
       .addCase(fetchToken.rejected, (state, action) => {
         state.loading = false;
@@ -55,5 +40,6 @@ const userTokenSlice = createSlice({
     },
   });
   
+  export const { logout, addError } = userTokenSlice.actions;
   export default userTokenSlice.reducer;
   

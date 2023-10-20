@@ -4,7 +4,7 @@ import "./banner.css";
 import img from "./../../asset/img/argentBankLogo.png"
 import { useDispatch, useSelector } from "react-redux";
 import {logout} from "./../../reducer/userTokenSlice.reducer";
-import { isEmpty } from "../utils";
+import { isEmpty } from "../../utils/utils";
 
 
 function Banner(){

@@ -3,6 +3,8 @@ import "./home.css";
 import chatLogo from "./../../asset/img/icon-chat.png";
 import moneyLogo from "./../../asset/img/icon-money.png";
 import securityLogo from "./../../asset/img/icon-security.png";
+import { DataList } from "../../data/homeImg/homeImg";
+import Feature from "../../component/feature/feature";
 
 function Home() {
 
@@ -20,8 +22,8 @@ function Home() {
       </div>
       <section className="features">
         <h2 className="sr-only">Features</h2>
-        <div className="feature-item">
-          <img src= {chatLogo} alt="Chat Icon" className="feature-icon" />
+        {/* <div className="feature-item"> */}
+          {/* <img src= {chatLogo} alt="Chat Icon" className="feature-icon" />
           <h3 className="feature-item-title">You are our #1 priority</h3>
           <p>
             Need to talk to a representative? You can get in touch through our
@@ -49,8 +51,13 @@ function Home() {
           <p>
             We use top of the line encryption to make sure your data and money
             is always safe.
-          </p>
-        </div>
+          </p> */}
+          {
+        DataList.map((element,i) => 
+          < Feature key={i} title={element.title} content={element.content} pictures ={element.pictures} />
+        )
+      }
+        {/* </div> */}
       </section>
     </main>
        

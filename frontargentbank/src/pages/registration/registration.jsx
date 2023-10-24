@@ -1,13 +1,16 @@
-import React, {  useRef } from "react";
+import React, {  useEffect, useRef } from "react";
 import "./registration.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {fetchToken} from "./../../reducer/allCreateAsyncThunk";
+import { isEmpty } from "../../utils/utils";
 
 function Registration() {
   const form = useRef();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  // const token = useSelector((state) => state.userToken.token) || localStorage.getItem('token');
+
 
   const handleForm = async(e)=> {
     e.preventDefault();
@@ -17,9 +20,34 @@ function Registration() {
       "email": "tony@stark.com",
       "password": "password123"
     };
-    await dispatch(fetchToken(userTryToLogin));
-    navigate("/Registration/user");
+    await dispatch(fetchToken(userTryToLogin))
+    .then((response)=> {
+      console.log(response, "je suis response")
+      const response2 = response.payload?.body.token ;
+      // console.log(response2, token, "je suis token")
+      if((!isEmpty(response2)) ){
+              // navigate("/Registration/user");
+      console.log( "je suis un genie sa marche")
+      navigate("/Registration/user");
+
+      }
+      else {
+        console.log("hhh")
+      }
+    })
+    
+    // if(!isEmpty(token)){
+    //   navigate("/Registration/user");
+    // }
 };
+// useEffect(() => {
+//   if (!isEmpty(token)) {
+//     navigate("/Registration/user");
+//   }
+//   else {
+//     navigate("/");
+//   }
+// }, [token, navigate, dispatch]);
 
     return(
        <>  

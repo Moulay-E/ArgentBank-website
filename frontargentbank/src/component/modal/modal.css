@@ -4,20 +4,28 @@
 	display: none;
 }
 
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .modal, .overlay {
-    width: 100vw;
-    height: 100vh;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    position: fixed;
+    display: flex;
+    justify-content: center;
+  }
+
+  .modal__background__content{
+    width: 80%;
   }
   
   .overlay {
     background: rgba(49,49,49,0.8);
   }
-
 
   .modal-content {
     position: absolute;
@@ -32,9 +40,23 @@
     min-width: 300px;
   }
   
-  .close-modal {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    padding: 5px 7px;
+  .btn-edit {
+    border-color: #00bc77;
+    background-color: #00bc77;
+    color: #fff;
+    font-weight: bold;
+    padding: 10px;
   }
+
+  .close-modal {
+    position: absolute; 
+    right: 10%;
+  }
+
+  input[readonly] {
+    background-color: #ccc;
+    color: #968a62;
+    cursor: not-allowed;
+  }
+  
+  

@@ -1,15 +1,17 @@
-import React, {  useEffect, useRef } from "react";
-import "./registration.css";
+import "./login.css";
+import React, { useRef } from "react";
+//redux
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import {fetchToken} from "./../../reducer/allCreateAsyncThunk";
+import {fetchToken} from "../../reducer/allCreateAsyncThunk";
+//utils
 import { isEmpty } from "../../utils/utils";
 
 function Registration() {
   const form = useRef();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  // const token = useSelector((state) => state.userToken.token) || localStorage.getItem('token');
+  const token = useSelector((state) => state.userToken.token) || localStorage.getItem('token');
 
 
   const handleForm = async(e)=> {

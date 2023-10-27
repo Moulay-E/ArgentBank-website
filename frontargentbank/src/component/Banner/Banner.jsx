@@ -10,12 +10,12 @@ import { isEmpty } from "../../utils/utils";
 function Banner(){
   const dispatch = useDispatch();
   // const token = useSelector((state)=>  state.userToken.token);
-  const userName = useSelector((state)=>  state.userProfile.userProfil.firstName)
+  const userName = useSelector((state)=>  state.userProfile.userProfil.userName)
   const token = useSelector((state) => state.userToken.token) || localStorage.getItem('token');
 
 // const token = !isEmpty(useSelector((state) => state.userToken.token)) ? localStorage.getItem('token') : false;
 
-  const hangleLogout = () => {
+  const handleLogout = () => {
     console.log("deco")
     // console.log(tes);
     dispatch(logout())
@@ -35,7 +35,7 @@ return(
       <h1 className="sr-only">Argent Bank</h1>
     <div>
     { !isEmpty(token) ? (
-      <Link onClick={hangleLogout} to= "/" className="main-nav-item">
+      <Link onClick={handleLogout} to= "/" className="main-nav-item">
         <i className="fa fa-user-circle"></i> 
         <span> {userName} </span><br/>
         <span> Sign Out</span>

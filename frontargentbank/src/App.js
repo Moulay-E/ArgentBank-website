@@ -1,10 +1,10 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from "./pages/home/home";
 import Banner from './component/Banner/Banner';
-import Registration from './pages/registration/registration';
+import Login from './pages/registration/login';
 import Footer from './component/footer/Footer';
-import User from './pages/user/user';
+import ProfileUser from './pages/user/profileUser';
 
 function App() {
   return (
@@ -13,8 +13,8 @@ function App() {
             <Banner />
             <Routes>
                <Route path="/" element={<Home />} />
-               <Route path="/Registration" element={<Registration />} />
-               <Route path="/Registration/user" element={<User />} />
+               <Route path="/Registration" element={<Login />} />
+               <Route path="/Registration/user" element={<ProfileUser />} />
             </Routes>
             <Footer />
          </Router>

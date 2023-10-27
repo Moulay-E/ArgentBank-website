@@ -1,17 +1,19 @@
+import "./profileUser.css";
 import React, { useEffect } from "react";
-import "./user.css";
 import Modal from "../../component/modal/modal";
 //redux
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import {fetchUserProfil} from "./../../reducer/allCreateAsyncThunk";
+import {fetchUserProfil} from "../../reducer/allCreateAsyncThunk";
 // utils and generation text
 import { isEmpty } from "../../utils/utils";
 import { userAccount } from "../../data/userAccount/userAccount";
 import  BankAccountFeature from "../../component/bankAccountFeature.js/bankAccountFeature";
 
-function User() {
-  const token = useSelector((state) => state.userToken.token) || localStorage.getItem('token');
+function ProfileUser() {
+  const token = 
+  useSelector((state) => state.userToken.token) ||
+   localStorage.getItem('token');
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const userProfil = useSelector((state)=> state.userProfile.userProfil);
@@ -49,4 +51,4 @@ function User() {
     )
 }
 
-export default User;
+export default ProfileUser;

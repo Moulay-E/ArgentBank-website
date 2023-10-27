@@ -3,7 +3,7 @@ import "./modal.css";
 import React from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import fetchTestPut from "../../pages/registration/fetchTest";
+import callAPI from "../../api/callApi";
 import { setUserNameReducer } from "../../reducer/userProfilSlice.reducer";
 
 function Modal() {
@@ -20,7 +20,7 @@ function Modal() {
     const userNameChange = async (e) => {
         e.preventDefault();
         dispatch(setUserNameReducer(useName))
-        fetchTestPut(token, {userName: useName});
+        callAPI("profilePut",token,{userName: useName})
         setUseName(""); 
         toggleModal();
     }
@@ -58,7 +58,10 @@ function Modal() {
                             <label htmlFor="lastName">Nom:</label>
                             <input type="text" id="lastName" value= { userProfile.lastName } readOnly />
                         </div>
-                        <button className="sign-in-button" id="connect" type="submit">
+                        <button 
+                            className="sign-in-button" id="connect" type="submit" 
+                            disabled={!useName.trim()}
+                        >
                             <span>Submit</span>
                         </button>
                     </form>

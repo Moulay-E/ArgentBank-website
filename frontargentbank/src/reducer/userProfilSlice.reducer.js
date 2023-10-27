@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import  {fetchUserProfil} from "./allCreateAsyncThunk";
 
-  
 const userProfilSlice = createSlice({
     name: "userProfil",
     initialState: {
@@ -12,15 +11,13 @@ const userProfilSlice = createSlice({
        lastName: "",
        userName: "",
        },
-      loading: false,  // Ajouté
+      loading: false,  
       error: null,
        
     },
     reducers: {
       setUserNameReducer: (state, action) => {
-        console.log(action, 'sa est apeller')
         state.userProfil.userName = action.payload;
-        console.log(state);
       }
     },
     extraReducers: (builder) => {
@@ -31,7 +28,6 @@ const userProfilSlice = createSlice({
       })
       .addCase(fetchUserProfil.fulfilled, (state, action) => {
         state.loading = false;
-        // state.userProfil = action.payload.body;
         state.userProfil.email = action.payload.body.email;
         state.userProfil.firstName = action.payload.body.firstName;
         state.userProfil.lastName = action.payload.body.lastName;

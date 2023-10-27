@@ -1,5 +1,5 @@
-.hero {
-    background-image: url('../../asset/img/bank-tree.jpeg');
+/* .hero {
+    background-image: url('../../asset/img/bank-tree.webp');
     background-position: 0 -50px;
     background-size: cover;
     background-repeat: no-repeat;
@@ -30,6 +30,7 @@
   
   @media (min-width: 920px) {
     .hero {
+      background-image: url('../../asset/img/bank-tree-little.webp');
       height: 400px;
       background-position: 0% 33%;
     }
@@ -79,4 +80,4 @@
     font-size: 1.25rem;
     font-weight: bold;
     margin-bottom: 0.5rem;
-  }
+  } */

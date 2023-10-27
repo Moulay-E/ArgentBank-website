@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./banner.css";
-import img from "./../../asset/img/argentBankLogo.png"
+import img from "./../../asset/img/argentBankLogo.webp"
 import { useDispatch, useSelector } from "react-redux";
 import {logout} from "./../../reducer/userTokenSlice.reducer";
 import { isEmpty } from "../../utils/utils";
@@ -9,18 +9,12 @@ import { isEmpty } from "../../utils/utils";
 
 function Banner(){
   const dispatch = useDispatch();
-  // const token = useSelector((state)=>  state.userToken.token);
   const userName = useSelector((state)=>  state.userProfile.userProfil.userName)
   const token = useSelector((state) => state.userToken.token) || localStorage.getItem('token');
 
-// const token = !isEmpty(useSelector((state) => state.userToken.token)) ? localStorage.getItem('token') : false;
-
   const handleLogout = () => {
-    console.log("deco")
-    // console.log(tes);
     dispatch(logout())
   }
-
 
 return(
      

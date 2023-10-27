@@ -1,6 +1,6 @@
-import MoneyIcon from '../../asset/img/icon-money.png'
-import SecurityIcon from '../../asset/img/icon-security.png'
-import ChatIcon from '../../asset/img/icon-chat.png'
+import MoneyIcon from '../../asset/img/icon-money.webp'
+import SecurityIcon from '../../asset/img/icon-security.webp'
+import ChatIcon from '../../asset/img/icon-chat.webp'
 
 export const DataList = [
 

@@ -1,18 +1,17 @@
 import "./login.css";
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 //redux
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {fetchToken} from "../../reducer/allCreateAsyncThunk";
 //utils
 import { isEmpty } from "../../utils/utils";
 
-function Registration() {
+function Login() {
   const form = useRef();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const token = useSelector((state) => state.userToken.token) || localStorage.getItem('token');
-
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleForm = async(e)=> {
     e.preventDefault();
@@ -24,32 +23,15 @@ function Registration() {
     };
     await dispatch(fetchToken(userTryToLogin))
     .then((response)=> {
-      console.log(response, "je suis response")
       const response2 = response.payload?.body.token ;
-      // console.log(response2, token, "je suis token")
       if((!isEmpty(response2)) ){
-              // navigate("/Registration/user");
-      console.log( "je suis un genie sa marche")
-      navigate("/Registration/user");
-
+        navigate("/Registration/user");
       }
       else {
-        console.log("hhh")
+        setErrorMessage("Wrong password or email.");
       }
     })
-    
-    // if(!isEmpty(token)){
-    //   navigate("/Registration/user");
-    // }
-};
-// useEffect(() => {
-//   if (!isEmpty(token)) {
-//     navigate("/Registration/user");
-//   }
-//   else {
-//     navigate("/");
-//   }
-// }, [token, navigate, dispatch]);
+  };
 
     return(
        <>  
@@ -75,10 +57,13 @@ function Registration() {
             <span>Sign In</span>
           </button>
         </form>
+        <div className="input-error">
+        {errorMessage && <p>{errorMessage}</p>}      
+        </div>
       </section>
     </main>
        </>
     ) 
 }
 
-export default Registration;
+export default Login;

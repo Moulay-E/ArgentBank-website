@@ -16,10 +16,9 @@ function Login() {
   const handleForm = async(e)=> {
     e.preventDefault();
     const userTryToLogin = {
-      // email: form.current[0].value,
-      // password:form.current[1].value,
-      "email": "tony@stark.com",
-      "password": "password123"
+      email: form.current[0].value,
+      password:form.current[1].value
+     
     };
     await dispatch(fetchToken(userTryToLogin))
     .then((response)=> {

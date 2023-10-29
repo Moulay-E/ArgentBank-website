@@ -1,0 +1,198 @@
+openapi: 3.0.3
+info:
+  title: Argent Bank API documentation - OpenAPI 3.0
+  description: Containt endpoint of this codeBase
+  version: 1.0.0
+  termsOfService: http://swagger.io/terms/
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io
+servers:
+  - url: http://localhost:3001/api/v1
+  
+tags:
+  - name: User bank account
+    description: Operation from the user
+    
+paths:
+  /user/bankAccount:
+    get:
+      security:
+        - api_key: []
+      tags:
+        - User Bank Account
+      summary: Retrieve all bank accounts of the user
+      description: Obtain all bank accounts associated with the authenticated user.
+      operationId: getAllUserBankAccounts
+      responses:
+        '200':
+          description: Successfully retrieved all user bank accounts
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BankAccount'
+        '400':
+          description: Bad request, possibly due to invalid input parameters
+        '401':
+          description: Unauthorized, missing or invalid authentication
+        '500':
+          description: Internal server error
+   
+  /user/{accountId}:
+    get:
+      security:
+        - api_key: []
+      tags:
+         - User Bank Account
+      summary: Retrieve a specific user bank account
+      description: Retrieve the details of a specific bank account belonging to the authenticated user.
+      parameters:
+        - name: accountId
+          in: path
+          description: Id of the account
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Successfully retrieved the details of the specified bank account
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountIdResponse'
+        '400':
+          description: Bad request, possibly due to invalid input parameters
+        '401':
+          description: Unauthorized, missing or invalid authentication
+        '500':
+          description: Internal server error
+      
+  
+  /user/bankAccount/{transactionId}:
+    get:
+      security:
+        - api_key: []
+      tags:
+        - User Bank Account
+      summary: Retrieve Details of a Specific User Transaction
+      description: Fetch the details of a specific transaction associated with the user's bank account.
+      parameters:
+        - name: transactionId 
+          in: path              
+          description: ID of the selected transaction
+          required: true
+          schema:
+            $ref: '#/components/schemas/Transaction'
+      responses:
+        '200':
+          description: Successfully retrieved the details of the specified transaction
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionResponse'
+        '400':
+          description: Bad request, possibly due to invalid input parameters
+        '401':
+          description: Unauthorized, missing or invalid authentication
+        '500':
+          description: Internal server error
+          
+          
+    put:
+      security:
+       - api_key: []
+      tags:
+        - User Bank Account
+      summary: Update a Specific User Transaction
+      description: Update the details of a specific transaction associated with the user's    bank account.
+      parameters:
+       - name: transactionId
+         in: path
+         description: ID of the transaction to update
+         required: true
+         schema:
+           $ref: '#/components/schemas/Transaction'
+      responses:
+       '200':
+         description: Successfully updated the transaction
+         content:
+           application/json:
+             schema:
+               $ref: '#/components/schemas/TransactionResponse'
+       '400':
+         description: Bad request, possibly due to invalid input parameters
+       '401':
+         description: Unauthorized, missing or invalid authentication
+       '500':
+         description: Internal server error
+
+
+
+
+
+
+
+components:
+  schemas:
+    BankAccount:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Account ID
+        accountName:
+          type: string
+          description: Account Name
+        amount:
+          type: number
+          description: Account amount
+        balance:
+          type: string
+          description: Balance
+          
+    AccountIdResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Account ID
+        accountName:
+          type: string
+          description: Account Name
+        month:
+          type: string
+          format: date-time
+          description: current month
+        transactionId:
+          type: integer
+          description: transaction of the account 
+        amount:
+          type: number
+          description: Account amount
+        balance:
+          type: string
+          description: Balance  
+          
+    Transaction:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Transaction ID 
+          
+    TransactionResponse:
+      type: object
+      properties:
+        annotation:
+          type: string
+          description: Note for the Transaction
+        category:
+          type: string
+          description: Category ofs the Transaction
+          
+  securitySchemes:        
+    api_key:
+      type: apiKey
+      name: api_key
+      in: header          

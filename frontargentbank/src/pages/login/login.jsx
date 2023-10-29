@@ -18,7 +18,6 @@ function Login() {
     const userTryToLogin = {
       email: form.current[0].value,
       password:form.current[1].value
-     
     };
     await dispatch(fetchToken(userTryToLogin))
     .then((response)=> {

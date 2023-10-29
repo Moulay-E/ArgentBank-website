@@ -14,7 +14,7 @@ import rootReducer from "./reducer";
 
 const store = configureStore({
   reducer: rootReducer,
-  devTools : true,
+  devTools : false,
   middleware: getDefaultMiddleware =>
   getDefaultMiddleware({
     serializableCheck: false,

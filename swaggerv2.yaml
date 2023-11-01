@@ -113,6 +113,13 @@ paths:
          required: true
          schema:
            $ref: '#/components/schemas/Transaction'
+      requestBody:
+        description: The new details of the transaction to update.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TransactionRequestBody'
       responses:
        '200':
          description: Successfully updated the transaction
@@ -126,11 +133,6 @@ paths:
          description: Unauthorized, missing or invalid authentication
        '500':
          description: Internal server error
-
-
-
-
-
 
 
 components:
@@ -184,12 +186,18 @@ components:
     TransactionResponse:
       type: object
       properties:
-        annotation:
+        details:
           type: string
           description: Note for the Transaction
         category:
           type: string
           description: Category ofs the Transaction
+    TransactionRequestBody:
+      type: object
+      properties:
+        details:
+          type: string
+          description: Note for the Transaction 
           
   securitySchemes:        
     api_key:

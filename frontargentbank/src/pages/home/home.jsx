@@ -1,5 +1,4 @@
 import React from "react";
-import "./home.css";
 import { DataList } from "../../data/homeImg/homeImg";
 import Feature from "../../component/feature/feature";
 

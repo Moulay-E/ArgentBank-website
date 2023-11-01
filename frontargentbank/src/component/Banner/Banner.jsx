@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./banner.css";
 import img from "./../../asset/img/argentBankLogo.webp"
 import { useDispatch, useSelector } from "react-redux";
 import {logout} from "./../../reducer/userTokenSlice.reducer";

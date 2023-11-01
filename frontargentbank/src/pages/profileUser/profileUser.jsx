@@ -1,4 +1,4 @@
-import "./profileUser.css";
+
 import React, { useEffect } from "react";
 import Modal from "../../component/modal/modal";
 //redux

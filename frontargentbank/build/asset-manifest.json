@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/static/css/main.d0bb3e25.css",
+    "main.js": "/static/js/main.9e18ec26.js",
+    "static/js/787.22c1abcf.chunk.js": "/static/js/787.22c1abcf.chunk.js",
+    "static/media/bank-tree.webp": "/static/media/bank-tree.e7357e99b2a5fccedd4b.webp",
+    "static/media/bank-tree-little.webp": "/static/media/bank-tree-little.2b0b964cbf6bb35105a1.webp",
+    "static/media/icon-security.webp": "/static/media/icon-security.29cbdf8c7a7751aaf2d2.webp",
+    "static/media/argentBankLogo.webp": "/static/media/argentBankLogo.aaecb2640abced417ac1.webp",
+    "static/media/icon-chat.webp": "/static/media/icon-chat.2873c04c5dc8646dbd4e.webp",
+    "static/media/icon-money.webp": "/static/media/icon-money.04fce489f254fc799fb9.webp",
+    "index.html": "/index.html",
+    "main.d0bb3e25.css.map": "/static/css/main.d0bb3e25.css.map",
+    "main.9e18ec26.js.map": "/static/js/main.9e18ec26.js.map",
+    "787.22c1abcf.chunk.js.map": "/static/js/787.22c1abcf.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d0bb3e25.css",
+    "static/js/main.9e18ec26.js"
+  ]
+}
